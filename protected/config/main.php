@@ -73,10 +73,10 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=my_yii',
+			'connectionString' => 'mysql:host=localhost;dbname=vacancy_db',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'secret',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
                 'authManager' => array(

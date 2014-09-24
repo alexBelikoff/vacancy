@@ -120,9 +120,8 @@ class Vacancy extends CActiveRecord
     public static function getVacancyLangugeAll(){
         if(empty(self::$_vacancyLanguge)){
             $models=VacancyLanguage::model()->with('language')->findAll();
-
             foreach ($models as $model){
-                self::$_vacancyLanguge[$model['vacancy_id']].=' '. $model->language['language_iso'];
+                    self::$_vacancyLanguge[$model['vacancy_id']].=' '. $model->language['language_iso']; 
             }
         }
         return self::$_vacancyLanguge;

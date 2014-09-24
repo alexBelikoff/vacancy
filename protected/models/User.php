@@ -33,8 +33,8 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email', 'required'),
-			array('username, password, email', 'length', 'max'=>128),
+			array('username, password, email, role', 'required'),
+			array('username, password, email, role', 'length', 'max'=>128),
 			array('profile', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -123,16 +123,18 @@ class User extends CActiveRecord
    {
         if(parent::beforeSave()){
            $this->password = $this->hashPassword( $this->password );
+           //var_dump($this); exit();
            return true;
         }else{
             return false;
         }           
     }  
     static public function getUsersRoles(){
-        return [ROLE_ADMIN=>'админ',
-                ROLE_MODER=>'модер',
-                ROLE_USER=>'юзер',
-                ROLE_BANNED=>'забанен',
-                ROLE_GUEST=>'гость'];
+        return [self::ROLE_ADMIN=>'админ',
+                self::ROLE_MODER=>'модер',
+                self::ROLE_USER=>'юзер',
+                self::ROLE_BANNED=>'забанен',
+                self::ROLE_GUEST=>'гость'];
+
     }
 }
