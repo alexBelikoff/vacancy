@@ -1,0 +1,62 @@
+
+ul.pager
+{
+	font-size:11px;
+	border:0;
+	margin:0;
+	padding:0;
+	line-height:100%;
+	display:inline;
+}
+
+ul.pager li
+{
+	display:inline;
+}
+
+ul.pager a:link,
+ul.pager a:visited
+{
+	border:solid 1px #9aafe5;
+	font-weight:bold;
+	color:#FFB42F;
+	padding:1px 6px;
+	text-decoration:none;
+}
+
+ul.pager .page a
+{
+	font-weight:normal;
+        color: #FFB42F;
+        background-color: #000000;
+}
+
+ul.pager a:hover
+{
+	border:solid 1px #0e509e;
+}
+
+ul.pager .selected a
+{
+	background:#FFB42F;
+	color:#000000;
+	font-weight:bold;
+}
+
+ul.pager .hidden a
+{
+	border:solid 1px #DEDEDE;
+        color: #FFB42F;
+        background-color: #000000;
+}
+
+/**
+ * Hide first and last buttons by default.
+ */
+ul.pager .first,
+ul.pager .last
+{
+	display:none;
+}
+
+
