@@ -17,7 +17,11 @@ $this->menu=array(
 ?>
 
 <h1>View Vacancy #<?php echo $model->vacancy_name; ?></h1>
-<?php //var_dump( $model ); ?>
+<?php if(Yii::app()->user->hasFlash('url')): ?>
+<div style="border: 1px solid black;">
+    <p>Вы пришли с <?php echo Yii::app()->user->getFlash('url')?></p>
+</div>
+<?php endif; ?>
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(

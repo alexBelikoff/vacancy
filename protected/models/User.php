@@ -33,12 +33,13 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email', 'required'),
+			array('username, password, email, role', 'required'),
 			array('username, password, email', 'length', 'max'=>128),
+                        array('role', 'length', 'max'=>50),
 			array('profile', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email, profile', 'safe', 'on'=>'search'),
+			array('id, username, password, email, profile, role', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -128,11 +129,20 @@ class User extends CActiveRecord
             return false;
         }           
     }  
-    static public function getUsersRoles(){
-        return [ROLE_ADMIN=>'админ',
-                ROLE_MODER=>'модер',
-                ROLE_USER=>'юзер',
-                ROLE_BANNED=>'забанен',
-                ROLE_GUEST=>'гость'];
+    static public function getUsersRoles($flip=null)
+    {
+        if(!$flip){
+        return [self::ROLE_ADMIN=>'админ',
+                self::ROLE_MODER=>'модер',
+                self::ROLE_USER=>'юзер',
+                self::ROLE_BANNED=>'забанен',
+                self::ROLE_GUEST=>'гость'];
+        }else{
+            return ['админ'=>self::ROLE_ADMIN,
+                    'модер'=>self::ROLE_MODER,
+                    'юзер'=>self::ROLE_USER,
+                    'забанен'=>self::ROLE_BANNED,
+                    'гость'=>self::ROLE_GUEST];
+        }
     }
 }

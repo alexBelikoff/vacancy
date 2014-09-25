@@ -50,8 +50,8 @@ class VacancyController extends Controller
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
-	{
-		$this->render('view',array(
+	{		
+                $this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
 	}
@@ -70,8 +70,10 @@ class VacancyController extends Controller
 		if(isset($_POST['Vacancy']))
 		{
 			$model->attributes=$_POST['Vacancy'];
-			if($model->save())
+			if($model->save()){
+                                Yii::app()->user->setFlash('url',Yii::app()->user->returnUrl);
 				$this->redirect(array('view','id'=>$model->vacancy_id));
+                        }
 		}
 
 		$this->render('create',array(

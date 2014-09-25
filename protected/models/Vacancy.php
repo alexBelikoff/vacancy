@@ -110,6 +110,7 @@ class Vacancy extends CActiveRecord
             'id'=>$this->vacancy_id,
         ));        
     }
+/*    
     public static function getVacancyLanguge($id){
         if(!isset(self::$_vacancyLanguge[$id])){
             self::getVacancyLangugeAll();
@@ -128,4 +129,6 @@ class Vacancy extends CActiveRecord
         return self::$_vacancyLanguge;
 
     }
+ * 
+ */
 }

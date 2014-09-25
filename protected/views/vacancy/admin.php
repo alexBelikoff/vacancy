@@ -59,11 +59,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'value'=>'Department::getDepartmentName($data->department_id)',
                         'filter'=>Department::getDepartmens(),
                     ),
-                array(
+                /*array(
                         'header'=>'Translate',
                         'value'=>'Vacancy::getVacancyLanguge($data->vacancy_id)',
                         //'filter'=>Vacancy::getVacancyLangugeAll(),
-                ),
+                ),*/
 		array(
 			'class'=>'CButtonColumn',
 		),

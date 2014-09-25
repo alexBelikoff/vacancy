@@ -45,7 +45,7 @@
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'role'); ?>
-		<?php //echo $form->dropDownList('role', User::ROLE_GUEST,  User::getUsersRoles(),array('empty' => 'Выберите роль')); ?>
+		<?php echo $form->dropDownList($model, 'role', User::getUsersRoles(),array('empty' => 'Выберите роль')); ?>
 		<?php echo $form->error($model,'role'); ?>
 	</div>        
 

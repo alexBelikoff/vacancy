@@ -3,7 +3,16 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-
+        <div>               
+            <h2>Цитата дня</h2>
+            <div id="quote-of-the-day">
+                <?php $this->renderPartial('_quote', array(
+                    'quote'=> $quote,
+               )); 
+                ?>
+            </div>
+        </div> 
+<?php echo CHtml::ajaxLink('Следующая цитата', array('getQuote'), array('update'=>'#quote-of-the-day')); ?>
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <p>Congratulations! You have successfully created your Yii application.</p>

@@ -12,7 +12,7 @@ class LinkPager extends CLinkPager
  
     public function __construct($owner=null)
     {        
-        $this->cssFile = Yii::app()->theme->baseUrl . '/css/pager.css';
+        $this->cssFile = Yii::app()->baseUrl . '/css/pager.css';
         parent::__construct($owner);
     }
 }
