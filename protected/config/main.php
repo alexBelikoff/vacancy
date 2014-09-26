@@ -2,7 +2,7 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-
+    Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -10,9 +10,10 @@ return array(
 	'name'=>'myYii',
         //'defaultController'=>'Vacancy',
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log','bootstrap',),
         'language'=>'ru',
         'sourceLanguage'=>'ru',
+        'theme'=>'bootstrap',
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -89,6 +90,9 @@ return array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
+                'bootstrap'=>array(
+                'class'=>'bootstrap.components.Bootstrap',
+                ),
 	),
 
 	// application-level parameters that can be accessed

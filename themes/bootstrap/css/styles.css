@@ -1,0 +1,33 @@
+#page {
+    padding-top: 60px;
+}
+body
+{
+   /* background:
+        url('begsvplet31.jpg') repeat-x fixed -130% 0,
+        url('krasplet16.jpg') repeat-x fixed 50% 0;
+    background-color: #fbeed5;*/
+   background: url('begsvplet31.jpg') repeat fixed -130% 0;
+}
+#quote-of-the-day-conteiner
+{
+  position: fixed;
+  top: 150px;
+  left: 10px;
+  width: 150px;
+    -moz-border-radius: 17px;
+    -webkit-border-radius: 17px;
+    -khtml-border-radius:17px;
+    border-radius: 17px;
+    box-shadow: 1px 1px 3px rgba(51,51,51,0.7);
+    padding: 10px;
+    font-size: 80%;
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 37%, #e5e5e5 58%, #ffffff 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(37%,#e5e5e5), color-stop(58%,#e5e5e5), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 37%,#e5e5e5 58%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 37%,#e5e5e5 58%,#ffffff 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 37%,#e5e5e5 58%,#ffffff 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 37%,#e5e5e5 58%,#ffffff 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */   
+}
