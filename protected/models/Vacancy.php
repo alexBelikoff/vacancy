@@ -85,6 +85,7 @@ class Vacancy extends CActiveRecord
 	public function search()
 	{
 		$criteria=new CDbCriteria;
+                //$criteria->with=array('department_name'=>array('with'=>'department'));
 		$criteria->compare('vacancy_name',$this->vacancy_name,true);
 		$criteria->compare('vacancy_description',$this->vacancy_description,true); 
                 $criteria->compare('department_id',$this->department_id);

@@ -80,6 +80,13 @@ return array(
 			'password' => 'secret',
 			'charset' => 'utf8',
 		),
+		/*'db2'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=sakila',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => 'secret',
+			'charset' => 'utf8',
+		),*/            
                 'authManager' => array(
                     // Будем использовать свой менеджер авторизации
                     'class' => 'PhpAuthManager',
@@ -93,6 +100,9 @@ return array(
                 'bootstrap'=>array(
                 'class'=>'bootstrap.components.Bootstrap',
                 ),
+            'viewRenderer'=>array(
+                'class'=>'ext.smarty.ESmartyViewRenderer',
+            ),
 	),
 
 	// application-level parameters that can be accessed
