@@ -6,7 +6,7 @@
 	<meta name="language" content="en" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
-
+        <link href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon" rel="shortcut icon">
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
 	<?php Yii::app()->bootstrap->register(); ?>
