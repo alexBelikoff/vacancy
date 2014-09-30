@@ -22,6 +22,7 @@
 				array('label'=>'Главная', 'url'=>array('/site/index')),
                                 array('label'=>'Вакансии','url'=>array('/vacancy/index')),
                                 array('label'=>'Пользователи','url'=>array('/user/index'),'visible'=>Yii::app()->user->checkAccess('administrator')),
+                                array('label'=>'Цитаты','url'=>array('/quotes/index'),'visible'=>Yii::app()->user->checkAccess('administrator')),
 				array('label'=>'О нас', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Контакты', 'url'=>array('/site/contact')),
 				array('label'=>'Войти', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
@@ -38,7 +39,7 @@
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-
+<?php $this->widget('application.components.widgets.QuotesWidget'); ?>
 	<?php echo $content; ?>
 
 	<div class="clear"></div>

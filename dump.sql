@@ -1,4 +1,4 @@
-﻿# SQL Manager for MySQL 5.4.3.43929
+# SQL Manager for MySQL 5.4.3.43929
 # ---------------------------------------
 # Host     : localhost
 # Port     : 3306
@@ -11,16 +11,6 @@
 /*!40101 SET NAMES utf8 */;
 
 SET FOREIGN_KEY_CHECKS=0;
-
-#
-# Удаление объектов БД
-#
-
-DROP TABLE IF EXISTS `vacancy_language`;
-DROP TABLE IF EXISTS `vacancy`;
-DROP TABLE IF EXISTS `user`;
-DROP TABLE IF EXISTS `language`;
-DROP TABLE IF EXISTS `department`;
 
 #
 # Структура для таблицы `department`: 
@@ -50,6 +40,21 @@ COMMENT=''
 ;
 
 #
+# Структура для таблицы `quotes`: 
+#
+
+CREATE TABLE `quotes` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `author` VARCHAR(100) COLLATE utf8_general_ci DEFAULT NULL,
+  `text` TEXT COLLATE utf8_general_ci,
+  PRIMARY KEY USING BTREE (`id`) COMMENT '',
+  UNIQUE INDEX `id` USING BTREE (`id`) COMMENT ''
+)ENGINE=InnoDB
+AUTO_INCREMENT=22 AVG_ROW_LENGTH=780 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Структура для таблицы `user`: 
 #
 
@@ -62,7 +67,7 @@ CREATE TABLE `user` (
   `role` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT 'guest',
   PRIMARY KEY USING BTREE (`id`) COMMENT ''
 )ENGINE=InnoDB
-AUTO_INCREMENT=5 AVG_ROW_LENGTH=5461 CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci'
+AUTO_INCREMENT=6 AVG_ROW_LENGTH=4096 CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci'
 COMMENT=''
 ;
 
@@ -79,7 +84,7 @@ CREATE TABLE `vacancy` (
    INDEX `department_id` USING BTREE (`department_id`) COMMENT '',
   CONSTRAINT `vacancy_fk` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`)
 )ENGINE=InnoDB
-AUTO_INCREMENT=21 AVG_ROW_LENGTH=3723 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=29 AVG_ROW_LENGTH=2482 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -123,18 +128,48 @@ INSERT INTO `language` (`language_id`, `language_name`, `language_iso`) VALUES
 COMMIT;
 
 #
-# Data for the `user` table  (LIMIT -496,500)
+# Data for the `quotes` table  (LIMIT -478,500)
+#
+
+INSERT INTO `quotes` (`id`, `author`, `text`) VALUES
+
+  (1,'Авраам Линкольн','Когда чувствуешь уныние, ищи исцеление в труде.'),
+  (2,'Фридрих Ницше','В добропорядочных людях меня в последнюю очередь отталкивает зло, которое они в себе носят'),
+  (3,'Фридрих Ницше','Там, где нельзя больше любить, там нужно пройти мимо.'),
+  (4,'Марина Цветаева','Душа от всего растет, больше всего же — от потерь.'),
+  (5,'Марина Цветаева','Единственное, чего люди не прощают — это то, что ты без них, в конце концов, обошёлся.'),
+  (6,'Генрик Иоган Ибсен','Великий грех, для которого нет прощения,- это умертвить жизнь любви в другом человеке'),
+  (7,'Генрик Иоган Ибсен','Самый сильный тот, кто борется в одиночку.'),
+  (8,'Фридрих Ницше','А на рассвете рассмеялся Заратустра в сердце своём и сказал насмешливо: \"Счастье бегает за мной. Это потому, что я не бегаю за женщинами. А счастье - женщина\"'),
+  (9,'Фридрих Ницше','Наша охота за истиной - неужто охота за счастьем?'),
+  (10,'Марина Цветаева','Некоторым, без кривизн -\r\nДорого дается жизнь.'),
+  (11,'Луций Анней Сенека','Глупо умирать из страха перед смертью.'),
+  (12,'Луций Анней Сенека','Золото пробуют огнем, женщину - золотом, а мужчин - женщиной.'),
+  (13,'Пьер Абеляр','Скупость начинается там, где кончается бедность.'),
+  (14,'Альбер Камю','Вечное искушение, против которого я непрестанно веду изнурительную борьбу, - цинизм.'),
+  (15,'Сальвадор Дали','Добровольного идиотизма я не понимаю.'),
+  (16,'Марк Аврелий Антонин','Ни с кем не случается ничего такого, чего он не в силах был бы вынести.'),
+  (17,'Марк Аврелий Антонин','Самый презренный вид малодушия - это жалость к самому себе.'),
+  (18,'Жан-Поль Сартр','Ад - это другие.'),
+  (19,'Жан-Поль Сартр','Настоящая свобода начинается по ту сторону отчаяния.'),
+  (20,'Сократ','Высшая мудрость - различать добро и зло.'),
+  (21,'Андре Моруа','Единственное, чему учит нас опыт, - что опыт ничему нас не учит.');
+COMMIT;
+
+#
+# Data for the `user` table  (LIMIT -495,500)
 #
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `profile`, `role`) VALUES
 
   (1,'demo','$2a$10$JTJf6/XqC94rrOtzuF397OHa4mbmZrVTBOQCmYD9U.obZRUut4BoC','webmaster@example.com',NULL,'guest'),
   (3,'conros','$2a$13$OVSAdNitV332TdLEdlUkR.U24bhqxF1ZJpMe8HpeANR0qhF1GvCA.','alexey.conros@yandex.ru','','guest'),
-  (4,'admin','$2a$13$9xq4Poq6FdpUAaZrVjCdH.ddjK3.TiUS.O0jxpYyOCrKHkoYBhPue','alexey.conros@yandex.ru','','administrator');
+  (4,'admin','$2a$13$9xq4Poq6FdpUAaZrVjCdH.ddjK3.TiUS.O0jxpYyOCrKHkoYBhPue','alexey.conros@yandex.ru','','administrator'),
+  (5,'хренСгоры','$2a$13$Nx2crTIbJA65ThVRZ80lHeQZUOzQMgZn9q8OHxmubkESPufXH6Sae','alexey.conros@yandex.ru','','banned');
 COMMIT;
 
 #
-# Data for the `vacancy` table  (LIMIT -479,500)
+# Data for the `vacancy` table  (LIMIT -471,500)
 #
 
 INSERT INTO `vacancy` (`vacancy_id`, `vacancy_name`, `vacancy_description`, `department_id`) VALUES
@@ -158,7 +193,15 @@ INSERT INTO `vacancy` (`vacancy_id`, `vacancy_name`, `vacancy_description`, `dep
   (17,'PHP/ MySQL Web Developer','Knowledge and Experience required:\r\n\r\nThe successful candidate must possess good technical development, problem solving, organisation and communication skills. You should have experience of developing advanced web sites for third parties and will be able to demonstrate your programming skills and easily show the contributions you have made to existing web sites. You must be self motivated and able to work as part of a team to develop projects that are delivered on time and to budget.\r\n\r\nYour duties will include documenting through note taking and version control, editing and improving existing code, as well as taking ownership and helping to test, release, and maintain the code you write. Other duties include monitoring progress of clients websites against target delivery dates, completing quality checks and testing procedures, liaising with existing and prospective clients and other developers, as well as being able to support the existing development team and contribute to policy, procedure and product development.\r\n\r\nPerson Specification\r\n\r\nPart of what makes ICO3 successful are the highly motivated people who work here and their enthusiasm for online marketing. We recruit individuals whose honesty, integrity, initiative and a creative approach to problem solving. Our employees have a ''can do'' attitude. An inspiration to your colleagues, you''ll have passion and a commitment to getting things done while always placing the client at the centre.\r\n\r\nYou will have a minimum of:\r\n\r\nA suitable degree with demonstrable qualifications in computer programming and/or web development and at least two years experience in a web developer role working on your own or as part of a team using PHP and MYSQL.\r\n\r\nSkills required:\r\n\r\n- Good knowledge and experience with HTML/XHTML/CSS\r\n- Good knowledge and skill in PHP 5 and MySQL\r\n- Good Object Oriented PHP skills\r\n- Experience with JavaScript and common JavaScript libraries is highly recommended but not a requirement.\r\n- A suitable degree with demonstrable qualifications in computer programming and/or web development\r\n- At least two years experience in a web developer role working on your own or as part of a team using PHP and MYSQL\r\n- An impressive portfolio of client websites to which you have made a demonstrable contribution\r\n- Some knowledge and experience of the LINUX computing environment\r\n\r\nCompany Information:\r\n\r\nICO3 is a fast-growing and innovative Plymouth based E Commerce company providing our very best service to our clients. We are located at the Tamar Science Park in Plymouth and as of November 2011 employ 20 members of staff. The park provides free and extensive parking for staff and is easy to access from all parts of the city. Around the park are numerous cafes and restaurants; including an on site cafe and Dartmoor is only a short five minute drive.\r\n\r\nICO3 offers a professional, friendly and supportive environment within an open plan office free of discriminatory practices. Ambitious and hard working, you will join a robust in-house competencies development programme aiming at encouraging all employees to reach their full potential.\r\n\r\nBenefits: We have a strong cultural policy. We provide where possible flexible working hours, provide staff benefits (including a contribution to gym membership at the luxurious Devonshire Health Club) and an EMI employee reward scheme to rapidly acquire shares in the company and benefit in the long term from the company''s growth.\r\n\r\nOur Mission Statement: ICO3 provides an all embracing e-commerce strategy for businesses. We work in partnership with small businesses to help them sell online. Our ultimate aim is to give business owners complete reassurance - knowing that their day to day on-line business is being looked after and is growing. Our approach is to develop a long term partnership with business owners to a personalised specification. We evolve with the client to meet the ever growing and changing demands of their business. ',1),
   (18,'PHP Developer- Comic Relief- London- PHP/ HTML/ CSS/ JavaScript/','PHP Developer for Comic Relief- London-\r\n\r\nComic Relief are one of the best known charities based in the UK, with a vision of a just world, free from poverty.\r\n\r\nThey''re building up a team of PHP Developers to help see their vision through digitally, increasing the reach and outputs of their work, continuing to make the world a better place.\r\n\r\nYour role will include duties such as:\r\n\r\n*Maintain and update content and functionality of the Comic Relief websites / applications as directed by the Digital Production Manager.\r\n*Monitor performance of the Comic Relief web platform and liaise with DevOps to diagnose and rectify performance issues.\r\n*Ensure any tests required to keep the site to a high standard are in place.\r\n*Ensure the site is performant on both the back and front-end across all defined browsers and platforms.\r\n\r\nWe are interested in people with some of the following skills: PHP, Zend, Drupal, Codeigniter, Yii, HTML, CSS, Javascript, Magento\r\n\r\nIf you are interested in this PHP Developer role please click the ''apply now'' button below.',1),
   (19,'Mid-level PHP Developer++','O mamma Mia',1),
-  (20,'php superDevoloper not Luser','fdghsagsddsg\r\ndsagfsdg<a>fafa</a>',1);
+  (20,'php superDevoloper not Luser','fdghsagsddsg\r\ndsagfsdg<a>fafa</a>',1),
+  (21,'Чмораган','Нужен тот, кто ходит и пинает всех',6),
+  (22,'Главный Чмораган','Нужен тот, кто будет ходить и пинать чмораганов',6),
+  (23,'manager','set to offf',6),
+  (24,'php superDevoloper','agdasssssssssssssssdssd\r\nsxvcsdvds\r\nsdvsdv\r\nsdvsdv\r\n60000',1),
+  (25,'Interaction Designer','Responsibilities\r\n\r\n    Define user models and task flows for new and existing Google AdWords products and features.\r\n    Develop storyboards, mockups, and prototypes that effectively communicate design ideas.\r\n    Create documentation (design specifications, pixel perfect mockups, animations) that enables developers to build software that fosters a delightful user experience.\r\n    Collaborate with and develop mutual respect and trust with product managers, engineers, researchers, and designers.\r\n    Participate in user experience research and usability studies.\r\n\r\nMinimum qualifications\r\n\r\n    Bachelor’s degree in a design-related field (human-computer interaction, human factors, or graphic design), or equivalent practical experience.\r\n    4 years of experience designing complex desktop or web applications.\r\n\r\nPreferred qualifications\r\n\r\n    Master’s degree in a design-related field (human-computer interaction, human factors, or graphic design).\r\n    7 years of experience designing complex desktop or web applications, solving tough interaction challenges.\r\n    Experience designing for multiple device types and contexts (desktop, tablet, smartphone).\r\n    Excellent knowledge of CSS and HTML and mastery of Adobe CS products.\r\n    Excellent problem-solving skills.\r\n    Outstanding verbal and written communication skills.\r\n\r\n',2),
+  (26,'Mobile UI/UX Designer','Responsibilities\r\n\r\n    <span<spanBe involved in the whole design process… Creation of wireframes, flows, comps, prototypes, and production assets\r\n    Translate complex user flows, wireframes and prototypes into beautiful, simple visual designs and user interfaces\r\n    Work closely with other designers, project owners and developers to define user issues and come up with the best solutions\r\n    <span Be a champion for the user\r\n    <span Defend your design decisions\r\n    Maintain visual guidelines to ensure consistent representation of Priceline’s brand\r\n\r\n \r\n\r\nRequirements\r\n\r\n    Good taste\r\n    A considered and thoughtful online portfolio with great examples of user interactions\r\n    You have a proven track record of solid visual design and a deep understanding of how the experience of mobile applications should work and feel\r\n    A solid understanding of typography, layout, grid systems and iOS and Android design standards\r\n    You are up to date on the latest trends and tools in mobile and keep up with blogs, books and articles related to your expertise\r\n    Be flexible and be comfortable in a fast-paced, sometimes ambiguous environment with frequently changing business needs\r\n    You should be abundantly curious, notice details & welcome feedback\r\n    You shop on your phone (well, you do everything on your phone or tablet) and see flaws and want to makes things better\r\n    You love pixel perfection, but can still iterate on a deadline\r\n    You know how to be part of collaborative team and work directly with developers to implement designs\r\n    Familiarity with working in an agile environment\r\n    Excellent communication, presentation, and interpersonal skills\r\n    You are punctual and have good time-management skills\r\n    <span Experience with e-commerce and other consumer-facing applications\r\n    Experience with design tools including Adobe CS Suite, Omnigraffle and other tools as they relate to documenting wireframes, interaction flows, prototypes, and high-fidelity screen level design',2),
+  (27,'Front End Web Developer ','SKILLS & ABILITIES\r\n\r\nEducation:\r\n\r\n     Bachelor’s degree in Computer Science, Engineering or related field, or equivalent experience.\r\n\r\n \r\n\r\nExperience:\r\n\r\n    Demonstrate experience developing consumer-facing applications as a team-member interfacing with back-end developers, designers, engineers and external agencies/partners.\r\n    2+ years of professional software development experience with HTML5, CSS3, JavaScript, jQuery, and ASP.NET MVC(C#).\r\n    Understanding of the latest design, accessibility, site performance, and development trends.\r\n    Experience with progressive enhancement and responsive design beyond simply screen size.\r\n    Knowledge of Photoshop including working with PSDs, layer comps, and optimizing images.\r\n    Experienced in designing, developing and testing for cross-browser and cross-platform environments.\r\n    Experience using browser developer tools, not just for debugging but when investigating performance issues.\r\n    Familiarity with creating SQL queries for MSSQL.\r\n    Experience working with Bootstrap, the front end framework.\r\n\r\n',2),
+  (28,'Test Engineer','\r\nSalary:\r\n£20000 - £30000\r\nKey skills:\r\nMCS are proud to recruit for a leading electronic manufacturer based in County Antrim.\r\n\r\nDue to a recent uplift in manufacturing orders they require a...\r\nDescription:\r\nMCS are proud to recruit for a leading electronic manufacturer based in County Antrim.\r\n\r\nDue to a recent uplift in manufacturing orders they require a permanent Test Engineer to join their flourishing team. This is an excellent opportunity to work for a market leader.\r\n\r\n\r\nThe Role\r\n\r\n\r\nYou will be responsible for creating, executing and supporting hardware test strategies and methodologies, primarily for products with automotive applications. Your main duties will include;\r\n\r\n*Interpreting design requirements and creating test plans\r\n\r\n*Developing automated test setups, producing CANoe and Labview test scripts\r\n\r\n*Carrying out Hardware Characterisation testing of ECU/Rx sub-systems and Electrical and Network Testing on CAN and LIN buses.\r\n\r\n*Producing documentation relating to Test requirements, specifications and test plans\r\n\r\nThe Person\r\n\r\nYou must have a degree in engineering or an equivalent discipline. You must have minimum of two year experience in a similar role involving interpreting specifications, developing test strategies and methodologies\r\n\r\nAs a test engineer you should have an effective understanding of engineering processes and related principles.\r\n\r\nThe Salary\r\n\r\n£24k-£30k dependant on experience\r\n\r\nTo speak in absolute confidence about this opportunity please contact Tony McAllister, Engineering & Technical Consultant at MCS Group on 028 9023 5456 or send an up to date CV via the link provided.\r\n\r\nIf this position is not right for you, we may have others that are.  Please visit www.mcsgroup.jobs to view a wide selection of our current jobs or call us on 028 9023 5456.\r\n\r\nAll conversations will be treated in the strictest of confidence. ',3);
 COMMIT;
 
 #

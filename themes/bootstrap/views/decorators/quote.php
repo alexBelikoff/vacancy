@@ -1,4 +1,4 @@
 <div class="quote">
-    &ldquo;<?php echo $content; ?>&rdquo; , <?php echo $author; ?>    
+    <blockquote><?php echo $content; ?><br><i><?php echo $author; ?></i></blockquote>    
 </div>
 

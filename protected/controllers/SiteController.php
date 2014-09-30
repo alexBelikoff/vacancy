@@ -2,13 +2,7 @@
 
 class SiteController extends Controller
 {
-        private $_quotes =[
-            ['Когда чувствуешь уныние, ищи исцеление в труде.','Авраам Линкольн'],
-            ['В добропорядочных людях меня в последнюю очередь отталкивает зло, которое они в себе носят','Фридрих Ницше'],
-            ['Там, где нельзя больше любить, там нужно пройти мимо.','Фридрих Ницше'],
-            ['Душа от всего растет, больше всего же — от потерь.','Марина Цветаева'],
-            ['Единственное, чего люди не прощают — это то, что ты без них, в конце концов, обошёлся.','Марина Цветаева'],
-        ];        
+     
         /**
 	 * Declares class-based actions.
 	 */
@@ -33,9 +27,7 @@ class SiteController extends Controller
 	 * when an action is not explicitly requested by users.
 	 */
         public function actionIndex() {
-            $this->render('index', array(
-                'quote'=>  $this->getRandomeQuote()
-            ));
+            $this->render('index');
         }
 
 	/**
@@ -112,16 +104,5 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-        
-    private function getRandomeQuote(){
-        return $this->_quotes[array_rand( $this->_quotes,1 )];
-    }
-    
-
-    
-    function actionGetQuote(){
-        $this->renderPartial('_quote', array(
-            'quote'=>  $this->getRandomeQuote()
-        ));
-    }        
+                
 }
