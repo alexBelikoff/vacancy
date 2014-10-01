@@ -48,6 +48,7 @@ return array(
                     array(
                         'class'=>'CFileLogRoute',
                         'levels'=>'error, warning',
+                        //'showInFireBug'=>true,
                     ),
                     /*array(
                         'class'=>'application.extensions.yii-debug-toolbar.YiiDebugToolbarRoute',
